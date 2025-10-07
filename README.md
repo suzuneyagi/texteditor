@@ -47,21 +47,19 @@ Date:   Sat Oct 4 23:12:20 2025 -0500
 ## Answer to Part 2: Analyzing the Simple String Buffer
 The insert method of SimpleStringBuffer.java:
 public void insert(char ch) {
-        buffer = buffer + ch;
+        buffer = buffer.substring(0, cursor) + ch + buffer.substring(cursor);
         cursor++;
         sz++;
     }
 
 Analysis on the runtime of the insert method:
 1. The relevant input(s) to the method:
-    not applicable
+    n is the number of characters in the original buffer string
 2. The critical operation(s).
-    buffer = buffer + ch;
-    cursor++;
-    sz++;
+    buffer = buffer.substring(0, cursor) + ch + buffer.substring(cursor);
 3. A mathematical model of the runtime of insert:
-    F(n) = 3
+    F(n) = n + 1
 4. Big-O notation:
-    The method is O(1)
+    The method is O(n)
 
-Whenever insert is called, it makes a new string (buffer + ch) and inserts it into the current buffer, and increment cursor's position and the size, so there are three operations that happen in one call. As Java strings are immutable, we have to make a new string every time insert is called and consequently, size has to be incremented too. This process of making a new string and assigns it to the current buffer makes the operation more expensive and inefficient.
+Whenever insert is called, it makes substrings of the original buffer and inserts the given character at the cursor index. When it makes the substrings, the program takes characters one by one from the original string and adds them to the new string. Thus, it operates n times plus one time for the new given character to make the new string, where n is the number of characters in the original buffer string. As such, the operation is very expensive because String type is immutable in Java - it has to make a completely new string whenever there is a modification in the string.

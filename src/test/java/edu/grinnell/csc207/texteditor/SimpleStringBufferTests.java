@@ -61,11 +61,21 @@ public class SimpleStringBufferTests {
         buffer.moveLeft();
         assertEquals(9, buffer.getCursorPosition());
         buffer.delete();
-        assertEquals("Hello Wold!", buffer.toString());
-        assertEquals(11, buffer.getSize());
+        buffer.delete();
+        buffer.delete();
+        assertEquals("Hello ld!", buffer.toString());
+        buffer.insert('H');
+        buffer.insert('a');
+        buffer.insert('r');
+        buffer.insert('a');
+        assertEquals("Hello Harald!", buffer.toString());
+        assertEquals(13, buffer.getSize());
         buffer.moveRight();
         buffer.moveRight();
-        assertEquals(10, buffer.getCursorPosition());
+        buffer.moveRight();
+        buffer.insert('!');
+        assertEquals("Hello Harald!!", buffer.toString());
+        assertEquals(14, buffer.getCursorPosition());
     }
 
     @Test

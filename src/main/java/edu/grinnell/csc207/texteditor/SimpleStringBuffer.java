@@ -27,7 +27,7 @@ public class SimpleStringBuffer {
      * @param ch a character that is inserted into the buffer
      */
     public void insert(char ch) {
-        buffer = buffer + ch;
+        buffer = buffer.substring(0, cursor) + ch + buffer.substring(cursor);
         cursor++;
         sz++;
     }
@@ -37,7 +37,7 @@ public class SimpleStringBuffer {
      * Does nothing if there are no characters in the buffer.
      */
     public void delete() {
-        if (sz != 0){
+        if (sz != 0 && cursor > 0){
             buffer = buffer.substring(0, cursor - 1) + buffer.substring(cursor);
             cursor--;
             sz--;
@@ -56,7 +56,7 @@ public class SimpleStringBuffer {
      * Moves the cursor one position backwards. The cursor stays put if it is already at the beginning of the buffer.
      */
     public void moveLeft() {
-        if (cursor != 0){
+        if (cursor > 0){
             cursor--;
         }
     }
@@ -65,7 +65,7 @@ public class SimpleStringBuffer {
      * Moves the cursor one position forwards. The cursor stays put if it is already at the end of the buffer.
      */
     public void moveRight() {
-        if (cursor != sz && cursor != 0){
+        if (cursor < sz && cursor > 0){
             cursor++;
         } 
     }
