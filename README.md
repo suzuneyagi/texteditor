@@ -13,6 +13,11 @@
 + ...
 
 ## Changelog
+commit 1762422fd96da99eca0fb2435252813f5cd3e130 (HEAD -> main)
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 20:11:55 2025 -0500
+
+    Completed README
 
 commit 76dfb4d20b7470f567440c6a28276605381c1ee4 (HEAD -> main, origin/main, origin/HEAD)
 Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
