@@ -52,10 +52,12 @@ public class GapBufferTests {
         buffer.insert('l');
         buffer.insert('d');
         buffer.insert('!');
+
         buffer.moveLeft();
         buffer.moveLeft();
         buffer.moveLeft();
         assertEquals(9, buffer.getCursorPosition());
+        assertEquals("Hello World!", buffer.toString());
         buffer.delete();
         buffer.delete();
         buffer.delete();
