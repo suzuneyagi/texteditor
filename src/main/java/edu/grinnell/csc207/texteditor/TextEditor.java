@@ -15,6 +15,13 @@ import java.nio.file.Paths;
  */
 public class TextEditor {
 
+    /**
+     * A helper function that renders the entire GapBuffer to the given screen, calling screen.refresh() to update the display.
+     * 
+     * @param buf GapBuffer object that is rendered
+     * @param screen The screen created in the main method
+     * @throws IOException if there is an invalid behavior regarding screen
+     */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException{
         screen.clear();
 
@@ -30,20 +37,24 @@ public class TextEditor {
      * @param args command-line arguments.
      */
     public static void main(String[] args) throws IOException {
+        // Only allows one input
         if (args.length != 1) {
             System.err.println("Usage: java TextEditor <filename>");
             System.exit(1);
         }
 
+        // Create path from the command-line argument
         Path path = Paths.get(args[0]);
         System.out.format("Loading %s...\n", path);
 
+        // Create the screen
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
         Screen screen = factory.createScreen();
         screen.startScreen();
 
         GapBuffer buf = new GapBuffer();
 
+        // If the path points to a valid file, renders the existing contents of the file
         if (Files.exists(path) && Files.isRegularFile(path)){
             String content = Files.readString(path);
             for (int i = 0; i < content.length(); i++) {
@@ -53,7 +64,8 @@ public class TextEditor {
 
         boolean isRunning = true;
         drawBuffer(buf, screen);
-        
+
+        // While esc is not pressed, renders any keyboard inputs to the buffer
         while (isRunning) {
             KeyStroke stroke = screen.readInput();
             KeyType type = stroke.getKeyType();
@@ -71,6 +83,7 @@ public class TextEditor {
             drawBuffer(buf, screen);
         }
 
+        // Overwrites the changes made on the screen
         Files.writeString(path, buf.toString());
         screen.stopScreen();
     }
