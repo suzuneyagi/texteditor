@@ -55,7 +55,8 @@ public class SimpleStringBuffer {
     }
 
     /**
-     * Moves the cursor one position backwards. The cursor stays put if it is already at the beginning of the buffer.
+     * Moves the cursor one position backwards. 
+     * The cursor stays put if it is already at the beginning of the buffer.
      */
     public void moveLeft() {
         if (cursor > 0) {
@@ -64,7 +65,8 @@ public class SimpleStringBuffer {
     }
 
     /**
-     * Moves the cursor one position forwards. The cursor stays put if it is already at the end of the buffer.
+     * Moves the cursor one position forwards. 
+     * The cursor stays put if it is already at the end of the buffer.
      */
     public void moveRight() {
         if (cursor < sz) {
