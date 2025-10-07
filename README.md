@@ -13,6 +13,18 @@
 + ...
 
 ## Changelog
+commit bc8ae098d487427cf29f9b790773b22dd2b84227 (HEAD -> main, origin/main, origin/HEAD)
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 20:39:38 2025 -0500
+
+    Found an error from the autograder test. Fixed the insert and delete operation in SimpleStringBuffer.java
+
+commit a4727195fd65b5bc27e5f4fe60e793ea85fe8b14
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 20:13:44 2025 -0500
+
+    Final commit for the draft submission
+    
 commit 1762422fd96da99eca0fb2435252813f5cd3e130 (HEAD -> main)
 Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
 Date:   Mon Oct 6 20:11:55 2025 -0500

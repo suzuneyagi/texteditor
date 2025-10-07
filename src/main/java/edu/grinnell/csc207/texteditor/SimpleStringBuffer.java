@@ -65,7 +65,7 @@ public class SimpleStringBuffer {
      * Moves the cursor one position forwards. The cursor stays put if it is already at the end of the buffer.
      */
     public void moveRight() {
-        if (cursor < sz && cursor > 0){
+        if (cursor < sz){
             cursor++;
         } 
     }
