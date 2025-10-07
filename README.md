@@ -7,11 +7,37 @@
 + https://osera.cs.grinnell.edu/ttap/data-structures-labs/text-editor.html
 + https://docs.junit.org/current/user-guide/#writing-tests
 + https://jqwik.net/
++ https://github.com/mojohaus/exec-maven-plugin/issues/144
++ Visual Studio Code 
++ Oracle, OpenJDK compiler
 + ...
 
 ## Changelog
 
-_(TODO: fill me in with a log of your committed changes)_
+commit 76dfb4d20b7470f567440c6a28276605381c1ee4 (HEAD -> main, origin/main, origin/HEAD)
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 19:39:44 2025 -0500
+
+    Added Javadoc comments
+
+commit ed5512cc2b88795f55d4b11eb86951215b7f8fad
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 19:31:53 2025 -0500
+
+    Implemented file input/output
+
+commit ba33fceabd1001aac3245af1a078e0d126ff984a
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Mon Oct 6 19:03:57 2025 -0500
+
+    Modified logical errors and added Javadoc to GapBuffer.java
+
+commit fa6e8020cbb878129a0f8ad6f9f0fc90b593cf35
+Author: suzuneyagi <yagiryouyasushi@MacBookAir.grinnell.edu>
+Date:   Sat Oct 4 23:12:20 2025 -0500
+
+    Implemented SimpleStringBuffer and GapBuffer. Started TUI.
+
 
 ## Answer to Part 2: Analyzing the Simple String Buffer
 The insert method of SimpleStringBuffer.java:
