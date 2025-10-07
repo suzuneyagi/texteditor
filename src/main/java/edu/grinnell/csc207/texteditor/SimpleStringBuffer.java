@@ -16,14 +16,15 @@ public class SimpleStringBuffer {
     /**
      * Constructor that initializes buffer, cursor position, and the size
      */
-    public SimpleStringBuffer(){
+    public SimpleStringBuffer() {
         buffer = "";
         cursor = 0;
         sz = 0;
     }
 
     /**
-     * Inserts character ch into the buffer at the cursor's current position, advancing the cursor one position forward.
+     * Inserts character ch into the buffer at the cursor's current position, 
+     * advancing the cursor one position forward.
      * @param ch a character that is inserted into the buffer
      */
     public void insert(char ch) {
@@ -33,11 +34,12 @@ public class SimpleStringBuffer {
     }
        
     /**
-     * Deletes the character at the cursor's current position, moving the cursor one position backwards. 
+     * Deletes the character at the cursor's current position, 
+     * moving the cursor one position backwards. 
      * Does nothing if there are no characters in the buffer.
      */
     public void delete() {
-        if (sz != 0 && cursor > 0){
+        if (sz != 0 && cursor > 0) {
             buffer = buffer.substring(0, cursor - 1) + buffer.substring(cursor);
             cursor--;
             sz--;
@@ -45,7 +47,7 @@ public class SimpleStringBuffer {
     }
 
     /**
-     * 
+     * Get the current position of the cursor 
      * @return the current position of the cursor
      */
     public int getCursorPosition() {
@@ -56,7 +58,7 @@ public class SimpleStringBuffer {
      * Moves the cursor one position backwards. The cursor stays put if it is already at the beginning of the buffer.
      */
     public void moveLeft() {
-        if (cursor > 0){
+        if (cursor > 0) {
             cursor--;
         }
     }
@@ -65,27 +67,27 @@ public class SimpleStringBuffer {
      * Moves the cursor one position forwards. The cursor stays put if it is already at the end of the buffer.
      */
     public void moveRight() {
-        if (cursor < sz){
+        if (cursor < sz) {
             cursor++;
         } 
     }
 
     /**
-     * 
-     * @return the size of the buffer (the number of the characters in buffer)
+     * Get the number of characters in the buffer
+     * @return the size of the buffer 
      */
     public int getSize() {
         return sz;
     }
 
     /**
-     * 
+     * Get the character at index i
      * @param i the index of the character in the buffer to get
      * @return the ith character of the buffer, zero-indexed
      * @throws an IndexOutOfBoundsException if i is an invalid index into the buffer
      */
     public char getChar(int i) {
-        if (i >= sz){
+        if (i >= sz) {
             throw new IndexOutOfBoundsException();
         } else {
             return buffer.charAt(i);

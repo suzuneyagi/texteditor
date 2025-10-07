@@ -19,7 +19,7 @@ public class GapBuffer {
      * Constructor that initialize the buffer, cursor, afterIndex, and sz
      * Initialize buffer to a character array with a length of 10, making all of them as the gap
      */
-    public GapBuffer(){
+    public GapBuffer() {
         buffer = new char[10];
         cursor = 0;
         afterIndex = buffer.length;
@@ -31,14 +31,15 @@ public class GapBuffer {
      * @param ch a character that is inserte to the buffer
      */
     public void insert(char ch) {
-        if (cursor == afterIndex){
+        if (cursor == afterIndex) {
             // Expand the array
             int newLength = buffer.length * 2;
+            int newAfterIndex = newLength - (buffer.length - afterIndex);
             char[] expand = new char[newLength];
             System.arraycopy(buffer, 0, expand, 0, cursor);
-            System.arraycopy(buffer, afterIndex, expand, newLength - (buffer.length - afterIndex), buffer.length - afterIndex);
+            System.arraycopy(buffer, afterIndex, expand, newAfterIndex, buffer.length - afterIndex);
 
-            afterIndex = newLength - (buffer.length - afterIndex);
+            afterIndex = newAfterIndex;
             buffer = expand;
 
             // Insert ch in the gap buffer
@@ -57,15 +58,15 @@ public class GapBuffer {
      * Move the cursor (start index) of the gap to the left by one
      */
     public void delete() {
-        if (cursor > 0){
+        if (cursor > 0) {
             cursor--;
             sz--;
         }
     }
 
     /**
-     * 
-     * @return the current position of the cursor (start index of the gap)
+     * Get the current cursor position, which is a start index of the gap
+     * @return the current position of the cursor
      */
     public int getCursorPosition() {
         return cursor;
@@ -76,7 +77,7 @@ public class GapBuffer {
      * move the start and end point of the gap (cursor and afterIndex) to the left by one 
      */
     public void moveLeft() {
-        if (cursor > 0){
+        if (cursor > 0) {
             cursor--;
             afterIndex--;
             buffer[afterIndex] = buffer[cursor];
@@ -88,7 +89,7 @@ public class GapBuffer {
      * move the start and end point of the gap (cursor and afterIndex) to the right by one 
      */
     public void moveRight() {
-        if (afterIndex < buffer.length){
+        if (afterIndex < buffer.length) {
             buffer[cursor] = buffer[afterIndex];
             cursor++;
             afterIndex++;
@@ -96,7 +97,7 @@ public class GapBuffer {
     }
 
     /**
-     * 
+     * Get the number of characters in the buffer
      * @return the current number of elements in the buffer
      */
     public int getSize() {
@@ -104,14 +105,14 @@ public class GapBuffer {
     }
 
     /**
-     * 
+     * Get the character at index i
      * @param i the index of the buffer to get the character of
      * @return a character at index i of the buffer
      */
     public char getChar(int i) {
-        if (i >= sz){
+        if (i >= sz) {
             throw new IndexOutOfBoundsException();
-        } else if (i < cursor){
+        } else if (i < cursor) {
             return buffer[i];
         } else {
             return buffer[i + (afterIndex - cursor)];
@@ -123,7 +124,7 @@ public class GapBuffer {
      * @return a string made of characters in the buffer outside of the gap
      */
     public String toString() {
-        String strBefore = new String(buffer,0, cursor);
+        String strBefore = new String(buffer, 0, cursor);
         String strAfter = new String(buffer, afterIndex, sz - cursor);
         return strBefore + strAfter;
     }

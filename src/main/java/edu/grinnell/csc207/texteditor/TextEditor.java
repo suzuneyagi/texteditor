@@ -16,16 +16,17 @@ import java.nio.file.Paths;
 public class TextEditor {
 
     /**
-     * A helper function that renders the entire GapBuffer to the given screen, calling screen.refresh() to update the display.
+     * A helper function that renders the entire GapBuffer to the given screen, 
+     * calling screen.refresh() to update the display.
      * 
      * @param buf GapBuffer object that is rendered
      * @param screen The screen created in the main method
      * @throws IOException if there is an invalid behavior regarding screen
      */
-    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException{
+    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         screen.clear();
 
-        for (int i = 0; i < buf.getSize(); i++){
+        for (int i = 0; i < buf.getSize(); i++) {
             TextCharacter ch = TextCharacter.fromCharacter(buf.getChar(i))[0];
             screen.setCharacter(i, 0, ch);
         }
@@ -55,7 +56,7 @@ public class TextEditor {
         GapBuffer buf = new GapBuffer();
 
         // If the path points to a valid file, renders the existing contents of the file
-        if (Files.exists(path) && Files.isRegularFile(path)){
+        if (Files.exists(path) && Files.isRegularFile(path)) {
             String content = Files.readString(path);
             for (int i = 0; i < content.length(); i++) {
                 buf.insert(content.charAt(i));
@@ -69,15 +70,15 @@ public class TextEditor {
         while (isRunning) {
             KeyStroke stroke = screen.readInput();
             KeyType type = stroke.getKeyType();
-            if (type == KeyType.Character){
+            if (type == KeyType.Character) {
                 buf.insert(stroke.getCharacter());
-            } else if (type == KeyType.ArrowLeft){
+            } else if (type == KeyType.ArrowLeft) {
                 buf.moveLeft();
-            } else if (type == KeyType.ArrowRight){
+            } else if (type == KeyType.ArrowRight) {
                 buf.moveRight();
-            } else if (type == KeyType.Backspace){
+            } else if (type == KeyType.Backspace) {
                 buf.delete();
-            } else if (type == KeyType.Escape){
+            } else if (type == KeyType.Escape) {
                 isRunning = false;
             }
             drawBuffer(buf, screen);
